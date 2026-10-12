@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>سامحيني 💔</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#0f0f0f;
+      color:white;
+      overflow:hidden;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+    }
+
+    .container{
+      width:90%;
+      max-width:500px;
+      z-index:2;
+    }
+
+    h1{
+      font-size:50px;
+      margin-bottom:20px;
+      color:#ff4d6d;
+      animation: glow 2s infinite alternate;
+    }
+
+    p{
+      font-size:20px;
+      line-height:1.8;
+      margin-bottom:25px;
+      color:#ddd;
+    }
+
+    img{
+      width:220px;
+      height:220px;
+      border-radius:20px;
+      object-fit:cover;
+      border:4px solid #ff4d6d;
+      margin-bottom:20px;
+      box-shadow:0 0 25px rgba(255,77,109,.5);
+    }
+
+    .buttons{
+      display:flex;
+      justify-content:center;
+      gap:15px;
+      flex-wrap:wrap;
+    }
+
+    button{
+      padding:14px 28px;
+      border:none;
+      border-radius:40px;
+      font-size:18px;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .yes{
+      background:#ff4d6d;
+      color:white;
+    }
+
+    .yes:hover{
+      transform:scale(1.1);
+      background:#ff1e4d;
+    }
+
+    .no{
+      background:white;
+      color:black;
+      position:relative;
+    }
+
+    .heart{
+      position:absolute;
+      color:#ff4d6d;
+      font-size:20px;
+      animation: float 6s linear infinite;
+      opacity:.7;
+    }
+
+    @keyframes float{
+      from{
+        transform:translateY(100vh) scale(0.5);
+      }
+      to{
+        transform:translateY(-100vh) scale(1.5);
+      }
+    }
+
+    @keyframes glow{
+      from{
+        text-shadow:0 0 10px #ff4d6d;
+      }
+      to{
+        text-shadow:0 0 30px #ff4d6d;
+      }
+    }
+
+    .message{
+      margin-top:20px;
+      font-size:24px;
+      color:#00ff99;
+      display:none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- موسيقى -->
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+  </audio>
+
+  <div class="container">
+
+    <!-- الصورة -->
+    <img src="basma" alt="love">
+
+    <!-- الاسم -->
+    <h1>بحبك يا بسومتي    💔</h1>
+
+    <!-- الرسالة -->
+    <p>
+      أنا عارف إني غلطت...  
+      بس والله ما كان قصدي أزعلك 😔  
+      انتي أهم حد في حياتي ❤️
+    </p>
+
+    <div class="buttons">
+      <button class="yes" onclick="forgive()">سامحتك ❤️</button>
+
+      <button class="no" id="noBtn">
+        لسه زعلانة 😒
+      </button>
+    </div>
+
+    <div class="message" id="msg">
+مقدرش على زعلك ينن عيني    </div>
+
+  </div>
+
+  <script>
+
+    // زر الزعل يهرب
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", () => {
+
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 60);
+
+      noBtn.style.position = "absolute";
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+    });
+
+    // رسالة السماح
+    function forgive(){
+      document.getElementById("msg").style.display = "block";
+    }
+
+    // قلوب متطايرة
+    setInterval(() => {
+
+      const heart = document.createElement("div");
+
+      heart.classList.add("heart");
+      heart.innerHTML = "❤️";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 6000);
+
+    }, 300);
+
+  </script>
+
+</body>
+</html>
